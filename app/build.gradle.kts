@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     kotlin("kapt")
 }
 
@@ -41,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -78,6 +80,7 @@ dependencies {
     // Dependency Injection
     implementation(libs.hilt)
     implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
 
     // Navigation
     implementation(libs.navigation.compose)
@@ -89,6 +92,7 @@ dependencies {
 
     // Json
     implementation(libs.moshi)
+    ksp(libs.moshi.codegen)
 
     // Image loading
     implementation(libs.coil)
